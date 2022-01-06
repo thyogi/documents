@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (C) 2000-2021
+//    by aixigo AG, Aachen, Germany.
+//
+//  All rights reserved. This material is confidential and proprietary to AIXIGO AG and no part of this
+//  material should be reproduced, published in any form by any means, electronic or mechanical including
+//  photocopy or any information storage or retrieval system nor should the material be disclosed to third
+//  parties without the express written authorization of AIXIGO AG.
+//
+//  aixigo AG
+//  http://www.aixigo.de
+//  Aachen, Germany
+//
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <parent>
+      <groupId>com.aixigo.tec</groupId>
+      <artifactId>parent</artifactId>
+      <version>2.1.0</version>
+      <relativePath />
+   </parent>
+
+   <groupId>com.aixigo.solution-reference</groupId>
+   <artifactId>solution-reference</artifactId>
+   <version>0.1.0-SNAPSHOT</version>
+   <packaging>pom</packaging>
+
+   <scm>
+      <developerConnection>scm:git:git@gitlab.com:aixigoAG/solution-templates/managing-template.git</developerConnection>
+      <tag>HEAD</tag>
+   </scm>
+
+   <properties>
+      <!--
+         The following convenience properties serve the purpose to update the aixigo platform services that
+         are build for out of the box usage. These properties help to make the service updates easy.
+
+         ATTENTION: Do not include versions of service dependencies here because the dependencies of the
+         services are managed in their POMs. Otherwise we will fall into the dependency hell among all
+         services that are specific to this project.
+      -->
+      <authentication-storage.version>2.12.0</authentication-storage.version>
+      <asset-management.version>3.7.0</asset-management.version>
+      <control-center.version>5.4.0</control-center.version>
+      <organization-directory.version>3.9.0</organization-directory.version>
+      <order-blotter.version>1.3.0</order-blotter.version>
+      <reason-management.version>4.10.0</reason-management.version>
+      <risk-engine.version>3.1.3-AST-16</risk-engine.version>
+      <reporting.version>3.18.0</reporting.version>
+      <service-runner.version>2.12.0</service-runner.version>
+      <zookeeper34-service.version>2.5.1</zookeeper34-service.version>
+      <kafka-service.version>2.8.0</kafka-service.version>
+      <process-engine.version>1.9.0</process-engine.version>
+      <border-proxy.version>2.22.0</border-proxy.version>
+      <dummy-openid-provider.version>2.7.0</dummy-openid-provider.version>
+      <import-management.version>0.22.0</import-management.version>
+      <timeline.version>1.0.2</timeline.version>
+   </properties>
+
+   <build>
+      <pluginManagement>
+         <plugins>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-deploy-plugin</artifactId>
+               <configuration>
+                  <skip>true</skip>
+               </configuration>
+            </plugin>
+            <plugin>
+               <groupId>org.codehaus.mojo</groupId>
+               <artifactId>versions-maven-plugin</artifactId>
+               <version>2.7</version>
+            </plugin>
+         </plugins>
+      </pluginManagement>
+   </build>
+
+   <modules>
+      <module>service-runner/processes/database-manager</module>
+      <module>service-runner/services/api-gateway</module>
+      <module>service-runner/services/importer</module>
+      <module>service-runner/services/producer</module>
+      <module>service-runner/services/transformer</module>
+      <module>service-runner/services/data-management</module>
+      <module>service-runner/services/analytics</module>
+      <module>service-runner/services/wealth-management</module>
+      <module>service-runner/services/order-management</module>
+      <module>service-runner/services/valuation-gap-monitor</module>
+      <module>service-runner/services/order-execution-update-monitor</module>
+      <module>service-runner/services/schema-registry</module>
+      <module>service-runner/services/trading-adapter-fix</module>
+      <module>service-runner/services/trading-simulator</module>
+      <module>service-runner/services/finance-math</module>
+      <module>service-runner/webapps/rebalancing-process</module>
+      <module>service-runner/webapps/swagger-ui</module>
+      <module>service-runner/tools/application-packager</module>
+   </modules>
+
+</project>

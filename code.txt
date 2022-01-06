@@ -1,0 +1,45 @@
+sudo apt install postgres-contrib
+#install postgres database
+
+sudo apt-get install -y libpostgresql-jdbc-java
+#install postgres driver
+
+#create database and user
+sudo -i -u postgres
+  createuser -P -s -e joe #set passwd rootroot
+
+createdb -p 5432 -h localhost -e testdb -U joe -W rootroot -E UTF8 -O goetz --lc-collate=C --lc-ctype=C -T template0
+
+#Update number of parallel connections
+cd /etc/postgresql/{version}/postgres.conf
+#change max connections to 1000
+
+
+#Downgrade Java
+sudo apt-get install openjdk-8-jre
+sudo apt-get install openjdk-8-jdk
+sudo update-alternatives --config java
+#Select the right sdk
+
+#Configuration files
+cp ./config/host/demo.config.properties ./config/host/config.properties
+cp ./config/host/demo.container.properties ./config/host/container.properties
+
+#Update Postgress DB in 
+./config/host/config.properties
+
+#hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+#javax.persistence.jdbc.driver = org.postgresql.Driver
+#javax.persistence.jdbc.user = joe
+#javax.persistence.jdbc.password = rootroot
+#javax.persistence.jdbc.url = jdbc:postgresql://localhost:5432/testdb
+
+#Alles Installieren und übersetzen
+mvn clean install -DskipTest -DskipITs -Dtgz.skip=true
+
+#Starten
+./run start --drop --test
+
+localhost:8080/border-proxy/control-center/control-center/frontend
+
+
